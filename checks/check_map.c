@@ -6,9 +6,15 @@
 void f_floodfill(char **map, int x, int z, t_data *data)
 {
 	// printf("lines : %i", data->lines);
-	if (x < 0 || x >= data->lines || z < 0 || z >= (ft_strlen(map[0])) || map[x][z] == '1' || map[x][z] == 'H')
+	if (x < 0 || x >= data->lines || z < 0 || z >= (ft_strlen(map[0])) 
+		|| map[x][z] == '1' || map[x][z] == 'H')
 	{
 		//printf("\033[1;31mexited cordonee = {%i,%i} [%c]\033[0m\n",x,z,map[x][z]);
+		return ;
+	}
+	if (map[x][z] == 'E')
+	{
+		map[x][z] = '1';
 		return ;
 	}
 	//printf("\033[1;32mANA HNA cordonee = {%i,%i} [%c]\033[0m\n",x,z,map[x][z]);
@@ -27,12 +33,6 @@ void check_map(t_data *data)
 	data->lines = 0;
 	data->buff = NULL;
 	i = 0;
-	// data->fd = open("so_long0/map/", O_RDWR);
-	// if (data->fd < 0)
-	// {
-	// 	printf("error\n");
-	// 	exit(1);
-	// }
 	while (1)
 	{
 		data->buff = get_next_line(data->fd);
@@ -54,7 +54,6 @@ void new_line(t_data *data)
 {
 	int i;
 	i = 0;
-	//char **map;
 	while (data->str[i])
 	{
 		if (data->str[i] == '\n')
@@ -62,12 +61,10 @@ void new_line(t_data *data)
 	    i++;
 	}
 	if (data->newl >=  data->lines)
-	{
-		printf("wa hdaaaa 3liya nl");
-		exit (1);
-	}
+		ft_error("wa hdaaaa 3liya nl");
 	data->map = ft_split(data->str, '\n');
 	data->map_cp = ft_split(data->str, '\n');
+	free(data->str);
 	data->width = ft_strlen(data->map[0]);
 }
 
@@ -82,16 +79,14 @@ void check_char(t_data *data)
 		data->newl = 0;
 		while (data->map[i][c])
 		{
-			if ((data->map[i][c] != '1' && data->map[i][c] != '0' && data->map[i][c] != 'P' && data->map[i][c] != 'C' && data->map[i][c] != 'E') && data->map[i] != NULL)
-			{
-				printf ("chi haja fchkel");
-				exit (1);
-			}
+			if ((data->map[i][c] != '1' && data->map[i][c] != '0' && data->map[i][c] != 'P' 
+				&& data->map[i][c] != 'C' && data->map[i][c] != 'E') && data->map[i] != NULL)
+				ft_error ("chi haja fchkel");
 			if (data->map[i][c] == 'P')
 			{
 				data->player += 1;
-				data->posx = i;
-				data->posy = c;
+				data->playerx = c;
+				data->playery = i;
 			}
 			if (data->map[i][c] == 'C')
 				data->coins += 1;
@@ -99,20 +94,17 @@ void check_char(t_data *data)
 				data->exit += 1;
 			c++;
 		}
-		//printf("this is s");
-		if ((ft_strlen(data->map[i]) != ft_strlen(data->map[i + 1])) && data->map[i + 1])
-		{
-			printf ("hada ma hoowa hada");
-			exit (1);
-		}
+		if ((ft_strlen(data->map[i]) != ft_strlen(data->map[i + 1])) 
+			&& data->map[i + 1])
+			ft_error ("hada ma hoowa hada");
 		i++;
 	}
 	if (data->player != 1)
-		printf("la3ib mossab");
+		ft_error("la3ib mossab");
 	if (data->coins == 0)
-		printf("finahowa l9ss !!!");
+		ft_error("finahowa l9ss !!!");
 	if (data->exit != 1)
-		printf("nari lbab !!");
+		ft_error("nari lbab !!");
 }
 
 void check_wall(t_data *data)
@@ -123,7 +115,7 @@ void check_wall(t_data *data)
 	while (data->map[0][c])
 	{
 		if (data->map[0][c] != '1')
-			printf("t9ba f l7it");
+			ft_error("t9ba f l7it\n");
 		c++;
 	}
 	c = 0;
@@ -131,46 +123,32 @@ void check_wall(t_data *data)
 	while (data->map[data->lines][c])
 	{
 		if (data->map[data->lines][c] != '1')
-			printf("t9ba f l7it");	
+			ft_error("t9ba f l7it");	
 		c++;
 	}
 	c = 1;
 	while (c < data->lines)
 	{
-		if (data->map[c][0] != '1' || data->map[c][ft_strlen(data->map[c]) - 1] != '1')
-			printf("t9ba f l7it");
+		if (data->map[c][0] != '1' 
+			|| data->map[c][ft_strlen(data->map[c]) - 1] != '1')
+			ft_error("t9ba f l7it");
 		c++; 
 	}
 }
 
 void floodfill_check(t_data *data)
 {
-	//data->c = 0;
 	data->i = 0;
-	//printf("dkhlat\n");
-	f_floodfill(data->map_cp, data->posx, data->posy, data);
-	//printf("khrjat\n");
-	// while (1)
-	// {
-	// 	printf("str is : %s\n", data->map_cp[data->i]);
-	// 	if (!data->map_cp[data->i])
-	// 	{
-	// 		break;
-	// 	}
-	// 	data->i++;
-	// }
-	// data->i = 0;
+	f_floodfill(data->map_cp, data->playery, data->playerx, data);
 
 	while (data->map_cp[data->i])
 	{
 		data->c = 0;
 		while (data->map_cp[data->i][data->c])
 		{
-			if (data->map_cp[data->i][data->c] == 'C')
-			{
-				printf("ch9itiha !!!");
-				exit (1);
-			}
+			if (data->map_cp[data->i][data->c] == 'C' 
+				|| data->map_cp[data->i][data->c] == 'E')
+				ft_error("ch9itiha !!!");
 			data->c++;
 		}
 		data->i++;

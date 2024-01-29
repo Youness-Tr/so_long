@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:33:04 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/01/25 11:35:21 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:47:08 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,10 @@ char	*new_one(char *save, int i, int j)
 	free(save);
 	str[j] = '\0';
 	return (str);
+}
+
+void	ft_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(1);
 }
