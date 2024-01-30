@@ -43,3 +43,7 @@ int main()
 
     return 0;
 }
+
+
+//printf("\033[1;31mexited cordonee = {%i,%i} [%c]\033[0m\n",x,z,map[x][z]);
+//printf("\033[1;32mANA HNA cordonee = {%i,%i} [%c]\033[0m\n",x,z,map[x][z]);
