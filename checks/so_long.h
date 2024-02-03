@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:19:49 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/01/30 18:11:24 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:09:58 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef struct s_data
 	void	*r_player;
 	void	*u_player;
 	void	*bone;
-	void	*hole;
+	void	*door;
+	void	*closed_door;
+	void	*fire;
 	int		position;
 	int		img_size;
 	int		posx;
@@ -55,6 +57,8 @@ typedef struct s_data
 	int		check_coins;
 	int		x;
 	int		y;
+	int 	moves;
+	char 	*num;
 }	t_data;
 
 /*********** parsing **********/
@@ -81,6 +85,8 @@ void	ft_error(char *str, t_data *data);
 
 void	images(t_data *data);
 void	destroy_imgs(t_data *data);
+int 	ft_exit(t_data *data);
+void	ft_non_error(char *str, t_data *data);
 
 /* drawing */
 
@@ -89,11 +95,16 @@ void	draw_all(t_data *data, char *pic, int c);
 // void	draw_map(t_data *data);
 // void	draw_coins(t_data *data);
 void	draw_player(t_data *data);
+void draw_str(t_data *data);
 
 /* moving */
 
 int		key_hook(int keys, t_data *data);
 void	check_stop(int key, int c, t_data *data, int i);
 void	move(int key, t_data *data);
+// int		close_window_hook(void *param);
+// int		mouse_click(int button, int x, int y, void *param);
+
+char	*ft_itoa(int n);
 
 #endif

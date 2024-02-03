@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:18:49 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/01/30 16:38:10 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:18:00 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	f_floodfill(char **map, int x, int z, t_data *data)
 {
 	if (x < 0 || x >= data->lines || z < 0 || z >= (ft_strlen(map[0]))
-		|| map[x][z] == '1' || map[x][z] == 'H')
+		|| map[x][z] == '1' || map[x][z] == 'H' || map[x][z] == 'M')
 	{
 		return ;
 	}
@@ -43,17 +43,10 @@ void	floodfill_check(t_data *data)
 		{
 			if (data->map_cp[data->i][data->c] == 'C'
 				|| data->map_cp[data->i][data->c] == 'E')
-				ft_error("ch9itiha !!!", data);
+				ft_error("invalid map", data);
 			data->c++;
 		}
 		data->i++;
 	}
 }
 
-void	ft_error(char *str, t_data *data)
-{
-	write(2, str, ft_strlen(str));
-	free(data->map);
-	free(data->map_cp);
-	exit(1);
-}
