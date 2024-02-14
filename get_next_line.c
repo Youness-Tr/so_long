@@ -6,11 +6,11 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:48 by ytarhoua          #+#    #+#             */
-/*   Updated: 2023/12/14 15:29:44 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:46:05 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 char	*read_file(int fd, char *save)
 {

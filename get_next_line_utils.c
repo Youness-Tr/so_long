@@ -6,11 +6,11 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:33:04 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/01/30 17:26:38 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:45:31 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 char	*ft_strchr(const char *save, int c)
 {
@@ -59,9 +59,9 @@ char	*ft_strjoin(char *save, char *buff)
 	return (str);
 }
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!s)

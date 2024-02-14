@@ -6,17 +6,16 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:52:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/03 15:07:46 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:24:18 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "get_next_line.h"
 
 void	check_map(t_data *data)
 {
 	int	i;
-	int check;
+	int	check;
 
 	check = 0;
 	data->lines = 0;
@@ -27,9 +26,8 @@ void	check_map(t_data *data)
 	while (1)
 	{
 		data->buff = get_next_line(data->fd);
-		data->lines++;
-		if(!data->buff && !check)
-		 	ft_error("map doesnt exist", data);
+		if (!data->buff && !check)
+			ft_error("map doesnt exist", data);
 		if (!data->buff)
 			break ;
 		data->str = ft_strjoin(data->str, data->buff);
@@ -44,6 +42,7 @@ void	new_line(t_data *data)
 
 	i = 0;
 	data->newl = 0;
+	data->lines = 0;
 	while (data->str[i])
 	{
 		if (data->str[i] == '\n')
@@ -52,14 +51,20 @@ void	new_line(t_data *data)
 	}
 	data->map = ft_split(data->str, '\n');
 	data->map_cp = ft_split(data->str, '\n');
+	i = 0;
+	while (data->map[i])
+	{
+		data->lines++;
+		i++;
+	}
 	free(data->str);
-	data->lines -= 1;
 	if (data->lines < 3)
 		ft_error("resize your map", data);
-	if (data->newl >= data->lines)
+	if (!(data->newl == data->lines - 1))
 		ft_error("new line error", data);
 	data->width = ft_strlen(data->map[0]);
 }
+
 void	check_wall(t_data *data)
 {
 	int	c;
@@ -130,7 +135,6 @@ void	chars(t_data *data, int i, int c)
 		}
 		i++;
 	}
-	printf("%i\n", data->player);
 	if (data->player != 1)
 		ft_error("player not correct", data);
 	if (data->coins == 0)
@@ -138,4 +142,3 @@ void	chars(t_data *data, int i, int c)
 	if (data->exit != 1)
 		ft_error("exit not correct", data);
 }
-

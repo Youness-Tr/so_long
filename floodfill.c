@@ -6,12 +6,11 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:18:49 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/03 16:18:00 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:26:21 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "get_next_line.h"
 
 void	f_floodfill(char **map, int x, int z, t_data *data)
 {
@@ -34,19 +33,18 @@ void	f_floodfill(char **map, int x, int z, t_data *data)
 
 void	floodfill_check(t_data *data)
 {
-	data->i = 0;
+	data->flood_i = 0;
 	f_floodfill(data->map_cp, data->playery, data->playerx, data);
-	while (data->map_cp[data->i])
+	while (data->map_cp[data->flood_i])
 	{
-		data->c = 0;
-		while (data->map_cp[data->i][data->c])
+		data->flood_c = 0;
+		while (data->map_cp[data->flood_i][data->flood_c])
 		{
-			if (data->map_cp[data->i][data->c] == 'C'
-				|| data->map_cp[data->i][data->c] == 'E')
+			if (data->map_cp[data->flood_i][data->flood_c] == 'C'
+				|| data->map_cp[data->flood_i][data->flood_c] == 'E')
 				ft_error("invalid map", data);
-			data->c++;
+			data->flood_c++;
 		}
-		data->i++;
+		data->flood_i++;
 	}
 }
-
