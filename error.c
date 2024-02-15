@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:33:12 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/14 15:26:01 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:54:54 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_error(char *str, t_data *data)
 	write(2, str, ft_strlen(str));
 	free_map(data->map);
 	free_map(data->map_cp);
-	system("leaks so_long");
 	exit(1);
 }
 
@@ -26,13 +25,12 @@ void	ft_non_error(char *str, t_data *data)
 	write(1, str, ft_strlen(str));
 	free_map(data->map);
 	free_map(data->map_cp);
-	system("leaks so_long");
 	ft_exit(data);
 }
 
 void	ft_error_one(char *str)
 {
-	write(1, str, ft_strlen(str));
+	write(2, str, ft_strlen(str));
 	exit(1);
 }
 

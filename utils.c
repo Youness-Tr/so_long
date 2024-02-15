@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:30:01 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/14 15:32:43 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/15 09:29:24 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_checks(t_data *data, char *argv)
 	floodfill_check(data);
 	data->lines += 1;
 	data->position = 'd';
+	data->posy = data->playery * 45;
+	data->posx = data->playerx * 45;
 }
 
 void	check_lose(int key, int c, t_data *data)

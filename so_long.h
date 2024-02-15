@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:19:49 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/14 15:35:28 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:41:20 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_data
 	int		check_count;
 	int		check_coins;
 	int		moves;
-	char 	*num;
+	char	*num;
 }	t_data;
 
 /*********** parsing **********/
@@ -74,7 +74,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
 
-
 /* checking */
 
 int		check_path(char *argv);
@@ -85,7 +84,6 @@ void	check_char(t_data *data, int i, int c);
 void	chars(t_data *data, int i, int c);
 void	check_wall(t_data *data);
 
-
 /* flood_fill */
 
 void	floodfill_check(t_data *data);
@@ -94,7 +92,7 @@ void	f_floodfill(char **map, int x, int z, t_data *data);
 /* errors */
 
 void	ft_error(char *str, t_data *data);
-void 	ft_error_one(char *str);
+void	ft_error_one(char *str);
 void	ft_non_error(char *str, t_data *data);
 
 /*********** graphic **********/
@@ -103,7 +101,7 @@ void	ft_non_error(char *str, t_data *data);
 
 void	images(t_data *data);
 void	destroy_imgs(t_data *data);
-int 	ft_exit(t_data *data);
+int		ft_exit(t_data *data);
 void	free_map(char **map);
 
 /* drawing */
@@ -111,8 +109,8 @@ void	free_map(char **map);
 void	set_background(t_data *data);
 void	draw_all(t_data *data, char *pic, int c);
 void	draw_player(t_data *data);
-void 	draw_str(t_data *data);
-void 	drawing(t_data *data);
+void	draw_str(t_data *data);
+void	drawing(t_data *data);
 
 /* moving */
 

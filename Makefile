@@ -6,7 +6,7 @@
 #    By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 16:07:18 by ytarhoua          #+#    #+#              #
-#    Updated: 2024/02/09 19:21:10 by ytarhoua         ###   ########.fr        #
+#    Updated: 2024/02/15 09:52:15 by ytarhoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,3 +29,6 @@ fclean : clean
 		rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
+.SECONDARY: $(OBJ)

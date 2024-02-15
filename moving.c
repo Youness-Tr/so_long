@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:12:12 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/14 15:29:37 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:15:47 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 
 void	check_stop(int key, int c, t_data *data, int i)
 {
-	if (c == 'E')
-	{
-		if (data->coins == data->check_coins && (
-				(data->map[data->playery - 1][data->playerx] == c && key == 13)
-			|| (data->map[data->playery + 1][data->playerx] == c && key == 1)
-		|| (data->map[data->playery][data->playerx + 1] == c && key == 2)
-		|| (data->map[data->playery][data->playerx - 1] == c && key == 0)))
-			ft_non_error("YOU WIN!\n", data);
-	}
 	if ((data->map[data->playery - 1][data->playerx] == c && key == 13)
 		|| (data->map[data->playery + 1][data->playerx] == c && key == 1)
 		|| (data->map[data->playery][data->playerx + 1] == c && key == 2)
@@ -35,7 +26,15 @@ void	check_stop(int key, int c, t_data *data, int i)
 	{
 		data->map[data->playery][data->playerx] = '0';
 		data->check_coins += 1;
-		printf("check coins is %i and %i\n", data->check_coins, data->coins);
+	}
+	if (c == 'E')
+	{
+		if (data->coins == data->check_coins && (
+				(data->map[data->playery - 1][data->playerx] == c && key == 13)
+			|| (data->map[data->playery + 1][data->playerx] == c && key == 1)
+		|| (data->map[data->playery][data->playerx + 1] == c && key == 2)
+		|| (data->map[data->playery][data->playerx - 1] == c && key == 0)))
+			ft_non_error("YOU WIN!\n", data);
 	}
 }
 

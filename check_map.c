@@ -6,7 +6,7 @@
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:52:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/14 15:24:18 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:54:05 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ void	check_map(t_data *data)
 	data->lines = 0;
 	data->buff = NULL;
 	i = 0;
-	if (!data->fd)
-		exit(1);
 	while (1)
 	{
 		data->buff = get_next_line(data->fd);
 		if (!data->buff && !check)
-			ft_error("map doesnt exist", data);
+			ft_error_one("map doesnt exist");
 		if (!data->buff)
 			break ;
 		data->str = ft_strjoin(data->str, data->buff);
