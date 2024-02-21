@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:52:18 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 11:40:34 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:26:33 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	check_map(t_data *data)
 {
@@ -41,8 +41,6 @@ void	new_line(t_data *data)
 	i = 0;
 	data->newl = 0;
 	data->lines = 0;
-	// if (!data->str)
-	// 	return ;
 	while (data->str[i])
 	{
 		if (data->str[i] == '\n')
@@ -129,7 +127,7 @@ void	chars(t_data *data, int i, int c)
 		{
 			if ((data->map[i][c] != '1' && data->map[i][c] != '0'
 				&& data->map[i][c] != 'P' && data->map[i][c] != 'C'
-				&& data->map[i][c] != 'E'))
+				&& data->map[i][c] != 'E' && data->map[i][c] != 'M'))
 				ft_error ("something added !!", data);
 			c++;
 		}

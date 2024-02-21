@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moving.c                                           :+:      :+:    :+:   */
+/*   moving_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:12:12 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 10:36:04 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:08:26 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	check_stop(int key, int c, t_data *data, int i)
 {
@@ -91,12 +91,14 @@ int	key_hook(int keys, t_data *data)
 	data->move = 45;
 	check_stop(keys, 'E', data, 1);
 	check_stop(keys, '1', data, 0);
+	check_lose(keys, 'M', data);
 	if (data->check_count == 1)
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->background, data->posx, data->posy);
 	}
 	move(keys, data);
+	draw_str(data);
 	check_c(keys, data);
 	draw_player(data);
 	if (keys == 53)

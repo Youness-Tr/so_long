@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 18:40:29 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 11:50:45 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:40:48 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	count_words(char *s, char c)
 {
@@ -82,7 +82,7 @@ char	**ft_split(char const *s, char c)
 	char	**p;
 	int		wc;
 	int		j;
-
+	
 	if (s == NULL)
 		return (NULL);
 	j = 0;

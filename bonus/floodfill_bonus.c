@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   floodfill.c                                        :+:      :+:    :+:   */
+/*   floodfill_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:18:49 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 10:33:53 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:07:59 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	f_floodfill(char **map, int x, int z, t_data *data)
 {
 	if (x < 0 || x >= data->lines || z < 0 || z >= (ft_strlen(map[0]))
-		|| map[x][z] == '1' || map[x][z] == 'H')
+		|| map[x][z] == '1' || map[x][z] == 'H' || map[x][z] == 'M')
 	{
 		return ;
 	}

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawing.c                                          :+:      :+:    :+:   */
+/*   drawing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:03:06 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 11:57:05 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:14:25 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	set_background(t_data *data)
 {
@@ -84,11 +84,24 @@ void	draw_player(t_data *data)
 			data->l_player, data->posx, data->posy);
 }
 
+void	draw_str(t_data *data)
+{
+	data->num = ft_itoa(data->moves);
+	mlx_put_image_to_window(data->mlx, data->win, data->map_data, 90, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->map_data, 135, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->map_data, 170, 0);
+	mlx_string_put(data->mlx, data->win, 100, 0, 0x000000, data->num);
+	free(data->num);
+}
+
 void	drawing(t_data *data)
 {
 	set_background(data);
 	draw_all(data, data->map_data, '1');
 	draw_all(data, data->bone, 'C');
 	draw_all(data, data->door, 'E');
+	draw_all(data, data->fire, 'M');
+	mlx_string_put(data->mlx, data->win, 40, 0, 0x000000, "moves");
+	mlx_string_put(data->mlx, data->win, 100, 0, 0x000000, data->num);
 	draw_player(data);
 }

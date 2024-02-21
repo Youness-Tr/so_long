@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:30:01 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 10:36:43 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:08:31 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	check_path(char *argv)
 {
@@ -52,6 +52,17 @@ void	ft_checks(t_data *data, char *argv)
 	data->position = 'd';
 	data->posy = data->playery * 45;
 	data->posx = data->playerx * 45;
+}
+
+void	check_lose(int key, int c, t_data *data)
+{
+	if ((data->map[data->playery - 1][data->playerx] == c && key == 13)
+		|| (data->map[data->playery + 1][data->playerx] == c && key == 1)
+		|| (data->map[data->playery][data->playerx + 1] == c && key == 2)
+		|| (data->map[data->playery][data->playerx - 1] == c && key == 0))
+	{
+		ft_non_error("YOU LOSE !!", data);
+	}
 }
 
 void	ft_putchar(char c)

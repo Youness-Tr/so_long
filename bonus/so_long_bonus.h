@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytarhoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:19:49 by ytarhoua          #+#    #+#             */
-/*   Updated: 2024/02/21 10:37:48 by ytarhoua         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:07:35 by ytarhoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -109,6 +109,7 @@ void	free_map(char **map);
 void	set_background(t_data *data);
 void	draw_all(t_data *data, char *pic, int c);
 void	draw_player(t_data *data);
+void	draw_str(t_data *data);
 void	drawing(t_data *data);
 
 /* moving */
@@ -117,6 +118,7 @@ int		key_hook(int keys, t_data *data);
 void	check_stop(int key, int c, t_data *data, int i);
 void	move(int key, t_data *data);
 void	check_c(int key, t_data *data);
+void	check_lose(int key, int c, t_data *data);
 
 /*get_next_line*/
 
